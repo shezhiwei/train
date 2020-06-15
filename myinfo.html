@@ -9,99 +9,156 @@
         body{
             margin:0;
         }
-        .container{
-            
+        .container{       
             width: 100%;
             margin: auto;
             height: 50px;
             background-color: #BE77FF;
         }
+        .content{
+            width: 1200px;
+            padding-top: 12px;
+            margin:auto;
+            vertical-align: middle;
+            overflow: hidden;
+        }
         .info{
-            width: 100%;
-            margin: auto;
-            height: 700px;
+            width: 1200px;
+            margin: 0 auto;
         }
         .photo{
-            padding-top: 8px;
-            margin-left:80px;
-            width: 35px;
-            height: 35px;
-            float: left;
-            border-radius: 26px;
-            display:inline-block;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            margin: auto;
+            vertical-align: middle;
         }
         .info p{
             text-align: center;
+            display: block;
+            width: 1200px;
         }
-        ul li{
-            float: left;
-            list-style: none;
-        }
-        ul li img{
-            width: 160px;
-            height: 215px;
-            margin-right: 30px;
-            margin-left: 90px;
-            margin-top: 20px;
+        img{
+            width: 200px;
+            height: 255px;
+            position: relative;
         }
         .bottom{
             width: 100%;
             height: 250px;
             background-color: #BE77FF;
         }
-        .movie li{
-            margin-left: 126px;
-            margin-right: 87px;
-        }
         .book li{
             margin-left: 110px;
             margin-right: 95px;
+        }
+        .img{
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .content-movie{
+            background-color: #fef0ef;
+            display: flex;
+            margin: 0 10px 10px 10px;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        .content_left{
+            vertical-align: middle;
+            display: inline-block;
+            float: left;
+        }
+        .content_right{
+            vertical-align: middle;
+            display: inline-block;
+            float: right;
+        }
+        .content_right a{
+            vertical-align: middle;
+            text-decoration: none;
+            color: white;
+            margin-left: 15px;
+        }
+        .img div{
+            margin-top: 20px;
+        }
+        .content_bottom{
+            width: 1200px;
+            margin: auto;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="./images/HWMD3JWDNQGL5LQCLHH6[NP.jpg" alt="" class="photo"> 
-        <p style="display:inline-block;color: white;margin-left: 10px;">铅笔的喜欢</p>
+        <div class="content">
+            <div class="content_left">
+                <img src="./images/HWMD3JWDNQGL5LQCLHH6[NP.jpg" alt="" class="photo"> 
+                <span style="color: white;vertical-align: middle;">铅笔的喜欢</span>
+            </div>
+            <div class="content_right">
+                <a href="#mov">喜欢的电影</a>
+                <a href="#book">喜欢的书</a>
+            </div>
+        </div>
     </div>
     <div class="info">
-        <p style="font-weight: 800;">喜欢的电影</p>
-         <ul>
-             <li><img src="./images/ad.jpg" alt=""></li>
-             <li><img src="./images/dm.jpg" alt=""></li>
-             <li><img src="./images/kbj.jpg" alt=""></li>
-             <li><img src="./images/ml.jpg" alt=""></li>
-         </ul>
-         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-         <ul  class="movie">
-             <li>阿呆正传</li>
-             <li>盗梦空间</li>
-             <li>看不见的客人</li>
-             <li>美丽人生</li>
-         </ul><br/><br/>
-         
-         
-        <p style="font-weight: 800;">喜欢的书</p>
-        <ul>
-            <li><img src="./images/an.jpg" alt=""></li>
-            <li><img src="./images/hz.jpg" alt=""></li>
-            <li><img src="./images/kr.jpg" alt=""></li>
-            <li><img src="./images/wl.jpg" alt=""></li>
-        </ul>
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-        <ul  class="book">
-            <li>爱你就像爱生命</li>
-            <li>活着</li>
-            <li style="margin-left: 140px;">狂人日记</li>
-            <li style="margin-left: 130px;">三国演义</li>
-        </ul>
+        <div class="img" id="mov">
+            <p style="font-weight: 800;font-size: 25px;">喜欢的电影</p>
+            <div class="content-movie">
+                <img src="./images/ad.jpg" alt="">
+                <span>阿呆正传</span>
+            </div>
+            <div class="content-movie">
+                <img src="./images/dm.jpg" alt="">
+                <span>盗梦空间</span>
+            </div>
+            <div class="content-movie">
+                <img src="./images/kbj.jpg" alt="">
+                <span>看不见的客人</span>
+            </div>
+            <div class="content-movie">
+                <img src="./images/ml.jpg" alt="">
+                <span>美丽人生</span>
+            </div>
+        </div>
+    </div>
+    <div class="info" style="margin-bottom: 20px;">
+        <div class="img" id="book">
+            <p style="font-weight: 800;font-size: 25px;">喜欢的书</p>
+            <div class="content-movie">
+                <img src="./images/an.jpg" alt="">
+                <span>爱你就像爱生命</span>
+            </div>
+            <div class="content-movie">
+                <img src="./images/hz.jpg" alt="">
+                <span>活着</span>
+            </div>
+            <div class="content-movie">
+                <img src="./images/kr.jpg" alt="">
+                <span>狂人日记</span>
+            </div>
+            <div class="content-movie">
+                <img src="./images/wl.jpg" alt="">
+                <span>三国演义</span>
+            </div>
+        </div>
     </div>
     <div class="bottom">
-        <p style="color: white;padding-top:90px; margin-left: 130px;display:inline-block;">"你看那向日葵，它们向着太阳弯下了腰，但若是太低了则意味着枯败了"</p>
-        <img src="./images/HWMD3JWDNQGL5LQCLHH6[NP.jpg" alt="" style="width: 180px;height: 180px;float: right;
-        display:inline-block;margin-right: 200px;padding-top: 30px;
-        ">
-        <p style="float: left;margin-top:70px;margin-left: 550px;color: white;">版权所有©铅笔小哥</p>
+        <div class="content_bottom">
+            <div class="content_bottom_text">
+                <p style="color: white;font-size:20px;padding-top:90px; margin-left: 130px;display:inline-block;">"你看那向日葵，它们向着太阳弯下了腰，但若是太低了则意味着枯败了"</p>
+                <img src="./images/HWMD3JWDNQGL5LQCLHH6[NP.jpg" alt="" style="width: 170px;height: 170px;float: right;
+                display:inline-block;margin-right: 100px;padding-top: 30px;
+                ">
+            </div>       
+        </div>
+        
+    </div>
+    <div style="width: 100%;background: #BE77FF;">
+        <span style="color: white;display:block;text-align: center;">版权所有©铅笔小哥</span>
     </div>
 </body>
 </html>
