@@ -28,13 +28,14 @@
                     top: height + "px",
                     right: 40,
                     "font-size":16+14*Math.random(),
-                    "color":"#"+(Math.random()*0x1000000<<0).toString(16)
+                    "color":"#"+(Math.random()*0x1000000<<0).toString(16),
+                    "overflow":"hidden"
                 });
                 
                 $('.container').append($content);
                $content.animate({
-                    right: width-$content.width()
-                    }, 8000+6000*Math.random(), function() {
+                    left: -$content.width()-50
+                    }, 6000+6000*Math.random(), function() {
                         $(this).remove();
                     });
                 
@@ -52,6 +53,7 @@
             margin: 0 auto;
             width: 1200px;
             position: relative;
+            overflow:hidden;
         }
         .content{
             width: 1200px;
