@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./jquery-3.4.1.js"></script>
+    <title>弹幕墙</title>
+    <script>
+        $(function() {
+            var arr = []
+            var start = true
+          //设置“发送”按钮点击事件，将弹幕体显示在弹幕墙上
+            $('#sent').click(function() {
+               var content=$("#message").val()
+               
+               if( $("#message").val().length>15){
+                    alert("发送的弹幕不能超过15个字哟")
+                    $("#message").val("")
+                    return false
+                }
+               arr.push(content)
+               $("#message").val("")
+               var height=($(".container").height()-60)*Math.random()+20
+               var width=$(".container").width()         
+               var $content = $('<div class="text">' + content + '</div>');
+               $content.css({
+                    top: height + "px",
+                    right: 40,
+                    "font-size":16+14*Math.random(),
+                    "color":"#"+(Math.random()*0x1000000<<0).toString(16)
+                });
+                
+                $('.container').append($content);
+               $content.animate({
+                    right: width-$content.width()
+                    }, 8000+6000*Math.random(), function() {
+                        $(this).remove();
+                    });
+                
+               
+            })
+            $("#clear").click(function(){
+                $(".container").empty()
+            })
+        })
+    </script>  
+    <style>
+        .container{
+            border: 1px solid #ddd;
+            height: 350px;
+            margin: 0 auto;
+            width: 1200px;
+            position: relative;
+        }
+        .content{
+            width: 1200px;
+            margin: 10px auto;
+            border-radius: 30px;
+        }
+        #message{
+            width: 300px;
+            height:30px;
+            margin:0 auto;
+            display: block;
+            padding-left: 10px;
+            
+        }
+        .btn{
+            margin: 10px auto;
+            text-align: center;
+        }
+        .btn button{
+            width: 100px;
+            height: 30px;
+        }
+        .a{
+            top: 20;
+            position: absolute;
+        }
+        .text{
+            position: absolute;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">弹幕墙</h1>
+    <div class="container">
+    </div>
+    <!--弹幕发送关闭-->
+    <div class="content">
+        <input id="message" type="text" placeholder="说点什么吧">
+        <div class="btn">
+            <button id="sent">发射弹幕</button>
+            <button id="clear">清屏</button>
+        </div>
+    </div>
+</body>
+</html>
