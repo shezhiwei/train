@@ -6,21 +6,24 @@ html,
 body {
   width: 100%;
   height: 100%;
+  flex-wrap: wrap;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-direction: row;
 }
 .container {
   width: 1200px;
   display: flex;
   position: absolute;
   align-items: center;
+  justify-content: center;
   z-index: 200;
   color: white;
 }
 .container .navbar {
   display: flex;
   height: 80px;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-grow: 1;
 }
@@ -53,13 +56,9 @@ body {
   color: white;
   margin: 0 20px;
 }
-:root {
-  width: 100%;
-  height: 100%;
-}
 .slide {
   height: 100%;
-  width: 100%;
+  width: 100vw;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -67,8 +66,10 @@ body {
 .slide .backdrop {
   background-color: rgba(42, 42, 42, 0.5);
   height: 100%;
-  width: 100%;
+  width: 100vw;
+  position: absolute;
   z-index: 66;
+  overflow: hidden;
 }
 .slide .slide_img {
   display: flex;
@@ -156,6 +157,39 @@ body {
   cursor: pointer;
   transition: 1s;
 }
+.food_button {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+}
+.food_button button {
+  border: 0;
+  padding: 7px 16px;
+  margin: 10px;
+  font-size: 16px;
+  color: #727272;
+  background-color: #e3e3e3;
+  border-radius: 5px;
+}
+.food_button button:nth-child(1) {
+  background-color: #0083d0;
+  color: white;
+}
+.food_button button:hover {
+  background-color: #0083d0;
+  color: white;
+  cursor: pointer;
+}
+.food_show {
+  width: 100%;
+  margin: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 @media screen and (max-width: 768px) {
   .link {
     display: none !important;
@@ -170,9 +204,5 @@ body {
   }
   .navbar {
     width: 80% !important;
-  }
-  h1 {
-    color: blue;
-    display: none;
   }
 }
