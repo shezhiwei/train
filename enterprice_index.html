@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    
-    
+    <link rel="stylesheet" href="./CSS/index.css">
     <script src="./jquery-3.4.1.js" ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>佘子哥の大饭店</title>
-    
     <script>
          $(function(){
             var a=0
@@ -42,25 +40,179 @@
                     setTimeout(function(){animate_time = 0;},450);
                     }
              })
+             var status="off"
+             $(".menu").on("click",function(){
+                 if(status==="off"){
+                    $(".link").attr({
+                    "style":"display:flex!important;transition: 2s!important;"             
+                    })
+                    if($(document).scrollTop()>document.body.clientHeight+30){
+                        $(".container").css({
+                            "height":"200px"
+                        })
+                        $(".nav").css({
+                            "background":"white",
+                            
+                        })
+                    }else{
+                        $(".container").css({
+                            "height":"200px"
+                        })
+                    }
+                    status="open"
+                 }else{
+                    $(".link").attr({
+                    "style":"display:none!important;transition: 2s!important;"             
+                    })
+                    if($(document).scrollTop()>document.body.clientHeight+30){
+                        $(".container").css({
+                            "height":"60px"
+                        })
+                        $(".nav").css({
+                            "background":"none",
+                            
+                        })
+                    }
+                    status="off"
+                 }
+                console.log(status)
+             })
+             //按钮的变色
+             $(".pageinfo >div").on("click",function(){
+                $(".pageinfo >div").css({
+                    "background-color":"white",
+                     "color":"black"
+                })
+                 $(this).css({
+                     "background-color":"#0083d0",
+                     "color":"white"
+                 })
+             })
+             //实现锚点的动画效果
+             $(".team_info_id,.food_show_id").on("click",function(){
+                
+                var id=$(this).attr("class")
+                $("html,body").animate({
+                    scrollTop:$("#"+id).offset().top
+                },400)
+                
+             })
              
+             $(window).scroll(function(){   
+                if($(document).scrollTop()>200){
+                    $(".container").css({
+                        "transform":"translateY(-100%)"
+                    })
+                }    
+                if($(document).scrollTop()<document.body.clientHeight){
+                    $(".menu").attr("src","./images/6.png")
+                    $(".container").css({
+                        "position":"absolute",
+                        "transform":"translateY(0px)",
+                        "background":"none",
+                        "box-shadow":"none",
+                        "width":"100%",
+                    })
+                    $(".nav").css({
+                            "background":"none",
+                            
+                        })
+                    
+                    $(".container a").css({
+                        "color":"white"         
+                    })
+                }   
+                if($(document).scrollTop()>document.body.clientHeight+30){
+                    $(".menu").attr("src","./images/30.png")
+                    
+                    if(status=="open"){
+                        if(document.body.clientWidth>768){
+                            $(".container").css({
+                            "height":"60px"
+                            })
+                            status="off"
+                            return false
+                        }
+                        $(".container a").css({
+                        "color":"#2e2e2e"         
+                        })
+                        $(".container").css({
+                        "height":"200px",
+                        "color":"black",
+                        "position":"fixed",
+                        "background":"white",
+                        "width":"100%",
+                        "box-shadow":"0px 0px 18px rgba(0, 0, 0, 0.2)",
+                        "transform":"translateY(0px)",
+                        "transition":"0.5s"
+                        
+                        })
+                    }else{
+                    $(".container").css({
+                        "height":"60px",
+                        "position":"fixed",
+                        "background":"white",
+                        "width":"100%",
+                        "box-shadow":"0px 0px 18px rgba(0, 0, 0, 0.2)",
+                        "transform":"translateY(0px)",
+                        "transition":"0.5s"
+                        
+                    })
+                    $(".container a").css({
+                        "color":"#2e2e2e",            
+                    })
+                    }
+                }
+             })
+            async function data(){
+                var result=await axios.get("https://www.fastmock.site/mock/1ea3b064ecc83ec38f3bc6ea251e0fc3/food/food")
+                console.log(result)
+                result=result.data.data.img
+                
+            }
+            
+            function getpage(){
+                
+                $(".pageinfo div").on("click",function(){
+                    console.log($(this).text())
+                    if($(this).text()==1){
+                        for(var i=1;i<=8;i++){
+                            var a=9+i
+                        $(".food_image >img:nth-child("+i+")").attr("src","./images/"+a+".jpg")
+                        }
+                    }else{
+                        for(var i=1;i<=8;i++){
+                            var a=17+i
+                        $(".food_image >img:nth-child("+i+")").attr("src","./images/"+a+".jpg")
+                        
+                        }
+
+                    }
+                })
+                console.log(this)
+                $("#pageinfo_1").click()
+            }
+            
+            getpage()
+            data()
          })
-    </script>
-    <link rel="stylesheet" href="./CSS/index.css">
+    </script> 
 </head>
 <body>
     <div class="container">
         <div class="navbar">
             <a class="logo">佘子哥の大饭店</a>
+            <div class="menu_content">
             <img src="./images/6.png" alt="" srcset="" class="menu">
+            </div>
             <div class="nav">
                 <ul class="link">
                     <li><a href="#">首页</a></li>
-                    <li><a href="#"> 产品展示</a></li>
-                    <li><a href="#">团队介绍</a></li>
-                </ul>
-               
-            </div>
-            
+                    <li><a href="#" class="food_show_id">美食展示</a></li>
+                    <li><a href="#" class="team_info_id">团队介绍</a></li>
+                    <li><a href="/about.html" class="about">关于我们</a></li>
+                </ul>            
+            </div>       
         </div>
     </div>
     <div class="slide">
@@ -69,21 +221,21 @@
                 <div class="slide_content">
                     <h1>佘子哥の大饭店</h1>
                     <h3>各种各样的美食、甜点与饮品,等待与您的相遇</h3>
-                    <button>探索更多</button>
+                    <button class="food_show_id" >探索更多</button>
                 </div>            
             </div>  
             <div class="img1"><img src="./images/2.jpg" alt="" srcset="" >
                 <div class="slide_content">
                     <h1>佘子哥の大饭店</h1>
                     <h3>各种各样的美食、甜点与饮品,等待与您的相遇</h3>
-                    <button>探索更多</button>
+                    <button class="food_show_id">探索更多</button>
                 </div>
             </div>
             <div class="img1"><img src="./images/4.jpg" alt="" srcset="" > 
                 <div class="slide_content">
                     <h1>佘子哥の大饭店</h1>
                     <h3>各种各样的美食、甜点与饮品,等待与您的相遇</h3>
-                    <button>探索更多</button>
+                    <button class="food_show_id">探索更多</button>
                 </div>
             </div>          
     </div>
@@ -92,43 +244,92 @@
     <button class="left_pre" >&lt</button>
     <button class="right_next">&gt</button>
     
-    <div class="food_show">
-        <h1>美食展示</h1>
-        <div class="food_button">            
-            <button>全部</button>
-            <button>菜品</button>
-            <button>小吃</button>
-            <button>饮品</button>
-            <button>甜点</button>
+    <div class="food_show" id="food_show_id">
+        <h1 class="titil">美食展示</h1>
+        <div class="food_image">       
+            <img src="" alt="" srcset="" class="food_image_content">
+            <img src="" alt="" srcset="" class="food_image_content">
+            <img src="" alt="" srcset="" class="food_image_content">
+            <img src="" alt="" srcset="" class="food_image_content">
+            <img src="" alt="" srcset="" class="food_image_content">
+            <img src="" alt="" srcset="" class="food_image_content">
+            <img src="" alt="" srcset="" class="food_image_content">
+            <img src="" alt="" srcset="" class="food_image_content">       
         </div>
-        <div class="food_image">
-                
+        <div class="pageinfo">
+            <div class="pageinfo_1" id="pageinfo_1">1</div>
+            <div class="pageinfo_2">2</div>
         </div>
     </div>
-    <div class="team_info">
-         <h1>团队介绍</h1>
+    <div class="team_info" id="team_info_id">
+         <h1 class="titil">团队介绍</h1>
          <div>
+             <div class="image_content">
              <img src="./images/7.jpg" alt="" srcset="">
+            </div>
              <div class="team_content">
              <h3>蒙奇·D·智伟</h3>
              <p>资深吃货,长达20年的美食鉴赏家,所有的菜品都要经过他的筛选,经过了千挑万选,才将通过的菜品呈现给大家</p>
             </div>
         </div>
          <div>
-            <h3>索俊杰隆</h3>
-            <p></p>
-             <img src="./images/8.jpg" alt="" srcset="">          
+            <div class="team_content">
+            <h3>索俊·杰隆</h3>
+            <p>上班时间12小时的他,即使迷路,但也总是坚持不懈的找到我们的饭店,专心上好剩下的一分钟班.</p>
+            </div>
+            <div class="image_content">
+             <img src="./images/8.jpg" alt="" srcset="">   
+            </div>       
         </div>
         <div>
+            <div class="image_content">
             <img src="./images/9.jpg" alt="" srcset="">
+            </div>
+            <div class="team_content">
             <h3>山治·雨翔</h3>
-            <p></p>
-       </div>
+            <p>身为佘子哥大饭店最重要也是唯一一位厨师,身上的担子也是最重的,有他在,没意外!若有意外,非洲种菜.</p>
+            </div>
+        </div>
         <div>
-        <h3>乌索·守钬普</h3>
-        <p></p>
-            <img src="./images/10.jpg" alt="" srcset="">   
+            <div class="team_content">
+            <h3>乌索·守钬普</h3>
+            <p>即使冒着被蜜蜂追击的危险,依然坚持不懈的偷来最新鲜的蜂蜜!终究还是最好的他,一个人默默抗下所有.</p>
+            </div>
+            <div class="image_content">
+            <img src="./images/10.png" alt="" srcset="">   
+            </div>
         </div>      
+    </div>
+    <div class="bottom">
+        <div class="bottom_content">
+            <div class="bottom_left">
+                <p>联系我们</p>
+                <p>地址：中国福建省福州市闽侯县闽江学院</p>
+                <p>电话:4008208820</p>
+                <p>QQ邮箱:1197530962</p>       
+            </div>
+            <div class="bottom_right">
+                <div class="bottom_right_menu">
+                    <p>菜品展示</p>
+                    <p>桌面网站</p>
+                    <p>移动网站</p>
+                    <p>app下载</p> 
+                </div>
+                <div class="bottom_right_menu">
+                    <p>公司动态</p>
+                    <p>最新菜品</p>
+                    <p>最新新闻</p>
+                    <p>人才招聘</p> 
+                    <p>公众号</p> 
+                </div>
+                <div class="bottom_right_menu">
+                    <p>帮助与支持</p>
+                    <p>帮助中心</p>
+                    <p>联系客服</p>
+                    <p>文档资源</p> 
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
