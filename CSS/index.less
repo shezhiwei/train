@@ -1,3 +1,4 @@
+
 *{
     padding: 0;
     margin: 0;
@@ -7,22 +8,25 @@ html,body{
     height: 100%;
     flex-wrap: wrap;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     flex-direction: row;
-    
 }
 .container{
-    width: 1200px;
+    width: 100%;
+    
     display: flex;
     position: absolute;    
-    align-items: center;
+    
     justify-content: center;
+    overflow: hidden;
+    
     z-index: 200;  
     color: white;
     .navbar{
         display: flex;
-        height: 80px;
+        height: 60px;
         justify-content: center;
+        flex-wrap: wrap;
         align-items: center;
         flex-grow: 1;
         .logo{
@@ -34,13 +38,23 @@ html,body{
         }
         .nav{
             display: flex;
-            align-items: stretch;
             .link{
                 
                 display: flex;
+                li{
+                    padding: 6px;
+                    a{
+                        font-size: 14px;
+                    }
+                }
             }
+            
+        }
+        .menu_content{
+            display: none;
+            align-items: center;
+            height: 60px;
             .menu{
-                display: none;
                 width: 30px;
                 height: 22px;
                 opacity: 0.8;
@@ -54,7 +68,7 @@ html,body{
     a{
         text-decoration: none;
         color: white;
-        margin: 0 20px;
+        margin: 0 10px;
        
     }   
 }
@@ -97,10 +111,11 @@ html,body{
     
 }
 .slide_content{
-    width: 60%;
+    width: 45%;
     height: 60%;
     display: flex;
     align-items: center;
+    justify-content: space-around;
     flex-direction: column;
     position: absolute;
     z-index: 666;
@@ -196,30 +211,216 @@ html,body{
 
 }
 .food_show{
-    width: 100%;
+    width: 1200px;
     margin: 100px auto;
+    padding-top: 100px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    
+    box-shadow:0px 0px 18px rgba(0, 0, 0, 0.2);
+    .food_image{
+        
+        display: flex;
+        
+        flex-wrap: wrap;
+        justify-content: center;
+        .food_image_content{
+            width: 280px;
+            height: 150px;
+        }
+    }
+    .pageinfo{
+        display: flex;
+        justify-content: center;
+        div{
+            width: 24px;
+            height: 24px;
+            border-radius: 3px;
+            text-align: center;
+            line-height: 1.5em;
+            border: solid 1px rgb(51, 3, 3,0.3);
+            margin: 30px 20px;
+            &:hover{
+                background-color:#0083d0 ;
+                color: white;
+                cursor: pointer;
+            }
+            &:nth-child(1){
+                background-color:#0083d0 ;
+                color: white;
+            }
+        }
+        
+    }
+}
+.titil::after{
+    content: " ";
+    width: 80%;
+    display: block;
+    height: 4px;
+    margin-top: 14px;
+    background-color: #0083d0;
+    transform: translateX(10%);
+    margin-bottom: 30px;
+  }
+.team_info{
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom:50px ;
+    padding-top: 100px;
+    box-shadow:0px 0px 18px rgba(0, 0, 0, 0.2);
+    h1{
+        margin-bottom: 30px;
+    }
+    div{
+        
+        
+        width: 100%;
+        display: flex;
+
+        img{
+            width: 100%;
+            height: 380px;
+        }
+        h3{
+            padding-left: 20px;
+            padding-top: 10%;
+        }
+        p{
+            margin-top: 10px;
+            text-indent: 2em;
+            width: 80%;
+            padding-left: 20px;
+        }
+        .team_content{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+.bottom{
+    width: 100%;
+    height: 300px;
+    background-color: #0083d0;
+    display: flex;
+    justify-content: center;
+    .bottom_content{
+        width: 1200px;
+        display: flex;
+        justify-content: center;
+        .bottom_left{
+            color: white;
+            width: 40%;
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            p{
+                
+                margin: 13px;
+                font-size: 14px;
+                &:nth-child(1){
+                    font-size: 16px;
+                    margin-bottom: 10px;
+                }
+            }    
+        }
+        .bottom_right{
+            display: flex;
+            color: white;
+            width: 60%;
+            display: flex;
+            justify-content: space-evenly;
+            .bottom_right_menu{
+                margin-top: 30px;
+                p{
+
+                    margin: 13px auto;
+                    font-size: 14px;
+                    &:hover:not(:nth-child(1)){
+                        cursor: pointer;
+                    }            
+                    &:nth-child(1){
+                        font-size: 16px;
+                        font-weight: 500;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+    }
 }
 
-@media screen and (max-width:768px){
-    .link{
-        display: none !important;
-    }
-    .menu{
-        display: block !important;
-    }
-}
 @media screen and (max-width:1200px){   
     .container{                   
         width: 100% !important;                
     }
-    
     .navbar{
         width: 80% !important;
        
-    }   
+    } 
+    .team_info{
+        width: 100% !important;   
+    }  
+    .bottom_content{
+        width: 100vw !important; 
+    }
+}
+@media screen and (max-width:768px){
+    .link{
+        display: none !important;
+        flex-direction: column !important;
+        transition: 2s;
+    }
+    .nav{
+        width: 100% !important;
+    }
+    .menu_content{
+        display:flex !important;
+    }
+    .slide_content{
+        h1{
+            font-size: 40px;
+        }
+    }
+    .team_info{
+        img{
+            height: 300px !important;
+        }
+    }
+}
+@media screen and (max-width:576px){
+    .slide_content{
+        h1{
+            font-size:26px ;
+        }
+        h3{
+            font-size:16px ;
+        }
+    }
+    .team_info{
+        img{
+            height: 200px !important;
+        }
+    }
+    .bottom_left{
+        p:nth-child(1){
+            font-size: 14px !important;
+        }
+        p:not(:nth-child(1)){
+            font-size: 10px !important;
+        }
+    }
+    .bottom_right_menu{
+        p:nth-child(1){
+            font-size: 14px !important;
+        }
+        p:not(:nth-child(1)){
+            font-size: 10px !important;
+        }
+    }
 }
