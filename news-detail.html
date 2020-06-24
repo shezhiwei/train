@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/about.css">
+    <link rel="stylesheet" href="./CSS/news.detail.css">
+    <script src="./jquery-3.4.1.js" ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        $(function(){
+            $(window).on('resize', function() {
+            if(document.body.clientWidth>768){
+                $(".link").attr({
+                "style":"display:flex !important;"
+                })
+                $(".container").css({
+                    "height":"60px"
+                })
+            }       
+            })
+            async function getdate(){
+            var result=await axios.get("https://www.fastmock.site/mock/1ea3b064ecc83ec38f3bc6ea251e0fc3/food/food")
+                console.log(result)
+                
+                var index=window.location.href.indexOf("id=")
+                var id=parseInt(window.location.href.substr(index+3,2))-1
+                var name=result.data.data[id].name
+                var content=result.data.data[id].content
+                var image=id+10
+                $(".food h1").text(name)
+                $(".content").text(content)
+                $(".content_image").attr("src","./images/"+image+".jpg")
+
+            }
+            var status="off"
+             $(".menu").on("click",function(){
+                 if(status==="off"){
+                    $(".link").attr({
+                    "style":"display:flex!important;"             
+                    })
+                    
+                    $(".container").attr({
+                    "style":"height:200px!important;transition: 1s !important;"             
+                    })
+                
+                    status="open"
+                 }else{
+                    $(".link").attr({
+                    "style":"display:none!important;"             
+                    })
+                   
+                    $(".container").css({
+                        "height":"60px"
+                    })
+                    $(".nav").css({
+                        "background":"none",
+                        
+                    })
+                    status="off"
+                 }
+                console.log(status)
+             })
+            getdate()
+        })
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <a class="logo">佘子哥の大饭店</a>
+            <div class="menu_content">
+                <img src="./images/30.png" alt="" srcset="" class="menu">
+            </div>
+            <div class="nav">
+                <ul class="link">
+                    <li><a href="/train/enterprice_index.html">首页</a></li>
+                    <li><a href="/train/enterprice_index.html#food_show_id" class="food_show_id">美食展示</a></li>
+                    <li><a href="/train/enterprice_index.html#team_info_id" class="team_info_id">团队介绍</a></li>
+                    <li><a href="/train/news.html">最新菜品</a></li>
+                    <li><a href="/train/about.html">关于我们</a></li>
+                </ul>            
+            </div>       
+        </div>
+    </div>
+    <div class="food">
+        <h1></h1>
+        <img src="" alt="" class="content_image">
+        <div class="content">
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="bottom_content">
+            <div class="bottom_left">
+                <p>联系我们</p>
+                <p>地址：中国福建省福州市闽侯县闽江学院</p>
+                <p>电话:4008208820</p>
+                <p>QQ邮箱:1197530962</p>       
+            </div>
+            <div class="bottom_right">
+                <div class="bottom_right_menu">
+                    <p>菜品展示</p>
+                    <p>桌面网站</p>
+                    <p>移动网站</p>
+                    <p>app下载</p> 
+                </div>
+                <div class="bottom_right_menu">
+                    <p>公司动态</p>
+                    <p>最新菜品</p>
+                    <p>最新新闻</p>
+                    <p>人才招聘</p> 
+                    <p>公众号</p> 
+                </div>
+                <div class="bottom_right_menu">
+                    <p>帮助与支持</p>
+                    <p>帮助中心</p>
+                    <p>联系客服</p>
+                    <p>文档资源</p> 
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
