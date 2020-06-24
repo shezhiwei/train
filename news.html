@@ -57,6 +57,33 @@
                 var id=parseInt($(this).attr("src").substr(9,2))-9
                 window.location.href = "https://shezhiwei.github.io/train/news-detail.html?id="+id;
             })
+            var status="off"
+             $(".menu").on("click",function(){
+                 if(status==="off"){
+                    $(".link").attr({
+                    "style":"display:flex!important;"             
+                    })
+                    
+                    $(".container").attr({
+                    "style":"height:200px!important;transition: 1s !important;"             
+                    })
+                
+                    status="open"
+                 }else{
+                    $(".link").attr({
+                    "style":"display:none!important;"             
+                    })
+                   
+                    $(".container").css({
+                        "height":"60px"
+                    })
+                    $(".nav").css({
+                        "background":"none",
+                        
+                    })
+                    status="off"
+                 }
+             })
             getpage()
         })
     </script>
