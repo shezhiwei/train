@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/about.css">
+    <link rel="stylesheet" href="./CSS/news.css">
+    <script src="./jquery-3.4.1.js" ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        $(function(){
+            console.log(document.body.clientWidth)
+        if(document.body.clientWidth>768){
+            $(".link").attr({
+            "style":"display:flex !important;"
+            })
+            console.log("hahsfdf")
+        }
+        function getpage(){
+            var a=0
+            
+            $(".pageinfo div").on("click",function(){
+                console.log($(this).text())
+                if($(this).text()==1){
+                    for(var i=1;i<=8;i++){
+                        var a=9+i
+                    $(".food_image >img:nth-child("+i+")").attr("src","./images/"+a+".jpg")
+                    }
+                    console.log($(".food_image >img:nth-child("+i+")").attr("src","./images/"+a+".jpg"))
+                }else{
+                    for(var i=1;i<=8;i++){
+                        var a=17+i
+                    $(".food_image >img:nth-child("+i+")").attr("src","./images/"+a+".jpg")
+                    
+                    }
+
+                }
+            })
+            console.log(this)
+            $("#pageinfo_1").click()
+        }
+            $(".food_image >img").on("click",function(){
+                var id=parseInt($(this).attr("src").substr(9,2))-9
+                window.location.href = "http://127.0.0.1:5500/news-detail.html?id="+id;
+            })
+            getpage()
+        })
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <a class="logo">佘子哥の大饭店</a>
+            <div class="menu_content">
+                <img src="./images/30.png" alt="" srcset="" class="menu">
+            </div>
+            <div class="nav">
+                <ul class="link">
+                    <li><a href="/train/enterprice_index.html">首页</a></li>
+                    <li><a href="/train/enterprice_index.html#food_show_id" class="food_show_id">美食展示</a></li>
+                    <li><a href="/train/enterprice_index.html#team_info_id" class="team_info_id">团队介绍</a></li>
+                    <li><a href="/train/news.html">最新菜品</a></li>
+                    <li><a href="/train/about.html">关于我们</a></li>
+                </ul>            
+            </div>       
+        </div>
+    </div>
+    <div class="titil1">
+        <h1 class="titil">最新菜品</h1>
+    </div>
+    <div class="food_show" id="food_show_id">
+        <div class="food_image">       
+            <img src="" alt="" srcset="" class="food_image_content">
+            <img src="" alt="" srcset="" class="food_image_content">
+            <img src="" alt="" srcset="" class="food_image_content">
+            <img src="" alt="" srcset="" class="food_image_content">
+            <img src="" alt="" srcset="" class="food_image_content">
+            <img src="" alt="" srcset="" class="food_image_content">
+            <img src="" alt="" srcset="" class="food_image_content">
+            <img src="" alt="" srcset="" class="food_image_content">       
+        </div>
+        <div class="pageinfo">
+            <div class="pageinfo_1" id="pageinfo_1">1</div>
+            <div class="pageinfo_2">2</div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="bottom_content">
+            <div class="bottom_left">
+                <p>联系我们</p>
+                <p>地址：中国福建省福州市闽侯县闽江学院</p>
+                <p>电话:4008208820</p>
+                <p>QQ邮箱:1197530962</p>       
+            </div>
+            <div class="bottom_right">
+                <div class="bottom_right_menu">
+                    <p>菜品展示</p>
+                    <p>桌面网站</p>
+                    <p>移动网站</p>
+                    <p>app下载</p> 
+                </div>
+                <div class="bottom_right_menu">
+                    <p>公司动态</p>
+                    <p>最新菜品</p>
+                    <p>最新新闻</p>
+                    <p>人才招聘</p> 
+                    <p>公众号</p> 
+                </div>
+                <div class="bottom_right_menu">
+                    <p>帮助与支持</p>
+                    <p>帮助中心</p>
+                    <p>联系客服</p>
+                    <p>文档资源</p> 
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

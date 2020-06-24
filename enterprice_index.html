@@ -12,6 +12,17 @@
          $(function(){
             var a=0
             var animate_time = 0;
+            //监控窗口大小 大于768px的时候做出container改变
+            $(window).on('resize', function() {
+            if(document.body.clientWidth>768){
+                $(".link").attr({
+                "style":"display:flex !important;"
+                })
+                $(".container").css({
+                    "height":"60px"
+                })
+            }       
+            })
             $(".left_pre").on("click",function(){
                 if(animate_time == 0){
                     a-=100
@@ -126,13 +137,7 @@
                     $(".menu").attr("src","./images/30.png")
                     
                     if(status=="open"){
-                        if(document.body.clientWidth>768){
-                            $(".container").css({
-                            "height":"60px"
-                            })
-                            status="off"
-                            return false
-                        }
+                
                         $(".container a").css({
                         "color":"#2e2e2e"         
                         })
@@ -148,22 +153,23 @@
                         
                         })
                     }else{
-                    $(".container").css({
-                        "height":"60px",
-                        "position":"fixed",
-                        "background":"white",
-                        "width":"100%",
-                        "box-shadow":"0px 0px 18px rgba(0, 0, 0, 0.2)",
-                        "transform":"translateY(0px)",
-                        "transition":"0.5s"
                         
-                    })
-                    $(".container a").css({
-                        "color":"#2e2e2e",            
-                    })
+                        $(".container").css({
+                            "height":"60px",
+                            "position":"fixed",
+                            "background":"white",
+                            "width":"100%",
+                            "box-shadow":"0px 0px 18px rgba(0, 0, 0, 0.2)",
+                            "transform":"translateY(0px)",
+                            "transition":"0.5s"
+                            
+                        })
+                        $(".container a").css({
+                            "color":"#2e2e2e",            
+                        })
+                        }
                     }
-                }
-             })
+                 })
             async function data(){
                 var result=await axios.get("https://www.fastmock.site/mock/1ea3b064ecc83ec38f3bc6ea251e0fc3/food/food")
                 console.log(result)
@@ -210,6 +216,7 @@
                     <li><a href="#">首页</a></li>
                     <li><a href="#" class="food_show_id">美食展示</a></li>
                     <li><a href="#" class="team_info_id">团队介绍</a></li>
+                    <li><a href="/train/news.html">最新菜品</a></li>
                     <li><a href="/train/about.html" class="about">关于我们</a></li>
                 </ul>            
             </div>       
