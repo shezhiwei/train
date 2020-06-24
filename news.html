@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>佘子哥の大饭店</title>
+    <link rel="icon" href="./images/7.jpg" type="img/x-ico" />
     <link rel="stylesheet" href="./CSS/about.css">
     <link rel="stylesheet" href="./CSS/news.css">
     <script src="./jquery-3.4.1.js" ></script>
@@ -18,6 +19,17 @@
             })
             console.log("hahsfdf")
         }
+        //按钮的变色
+        $(".pageinfo >div").on("click",function(){
+                $(".pageinfo >div").css({
+                    "background-color":"white",
+                     "color":"black"
+                })
+                 $(this).css({
+                     "background-color":"#0083d0",
+                     "color":"white"
+                 })
+             })
         function getpage(){
             var a=0
             
@@ -43,7 +55,7 @@
         }
             $(".food_image >img").on("click",function(){
                 var id=parseInt($(this).attr("src").substr(9,2))-9
-                window.location.href = "http://127.0.0.1:5500/news-detail.html?id="+id;
+                window.location.href = "https://shezhiwei.github.io/train/news-detail.html?id="+id;
             })
             getpage()
         })
