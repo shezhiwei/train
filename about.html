@@ -18,33 +18,46 @@
     $(function(){
 
         var status="off"
-             $(".menu").on("click",function(){
-                 if(status==="off"){
-                    $(".link").attr({
-                    "style":"display:flex!important;"             
-                    })
-                    
-                    $(".container").attr({
-                    "style":"height:200px!important;transition: 1s !important;"             
-                    })
+        $(window).on('resize', function() {
+            if(document.body.clientWidth>768){
+                $(".link").attr({
+                "style":"display:flex !important;"
+                })
+                $(".container").css({
+                    "height":"60px"
+                })
+            }       
+        })
+
+        $(".menu").on("click",function(){
+            if(status==="off"){
+            
+            $(".link").attr({
+            "style":"display:flex!important;"             
+            })
+            
+            $(".container").attr({
+            "style":"height:200px!important;transition: 1s !important;"             
+            })
+        
+            status="open"
+            }else{
+            
+            $(".link").attr({
+            "style":"display:none!important;"             
+            })
+            
+            $(".container").css({
+                "height":"60px"
+            })
+            $(".nav").css({
+                "background":"none",
                 
-                    status="open"
-                 }else{
-                    $(".link").attr({
-                    "style":"display:none!important;"             
-                    })
-                   
-                    $(".container").css({
-                        "height":"60px"
-                    })
-                    $(".nav").css({
-                        "background":"none",
-                        
-                    })
-                    status="off"
-                 }
-                console.log(status)
-             })
+            })
+            status="off"
+            }
+        console.log(status)
+        })
     })
 </script>
 <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=SyPylKRsjag6xTKgiv0udIdFqHkelH15&s=1"></script>
@@ -59,9 +72,10 @@
             </div>
             <div class="nav">
                 <ul class="link">
-                    <li><a href="/train//enterprice_index.html">首页</a></li>
-                    <li><a href="#" class="food_show_id">美食展示</a></li>
-                    <li><a href="#" class="team_info_id">团队介绍</a></li>
+                    <li><a href="/train/enterprice_index.html">首页</a></li>
+                    <li><a href="/train/enterprice_index.html#food_show_id" class="food_show_id">美食展示</a></li>
+                    <li><a href="/train/enterprice_index.html#团队介绍" class="team_info_id">团队介绍</a></li>
+                    <li><a href="/train/news.html">最新菜品</a></li>
                     <li><a href="#">关于我们</a></li>
                 </ul>            
             </div>       
