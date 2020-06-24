@@ -344,7 +344,7 @@ body {
 }
 @media screen and (max-width: 768px) {
   .link {
-    display: none !important;
+    display: none;
     flex-direction: column !important;
     transition: 2s;
   }
@@ -382,5 +382,10 @@ body {
   }
   .bottom_right_menu p:not(:nth-child(1)) {
     font-size: 10px !important;
+  }
+}
+@media screen and (min-width: 768px) {
+  .link {
+    display: flex;
   }
 }
